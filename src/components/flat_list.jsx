@@ -1,25 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+import Flat from './flat';
 
-    this.state = {
-      flats: [],
-      selectedFlatId: null
-    };
-  }
+const FlatList = (props) => {
+  const renderList = ({ flats, updateSelectedFlat, selectedFlat }) => {
+    return flats.map((flat, index) => {
+      return (
+        <Flat
+          flat={flat}
+          key={flat.id}
+          selected={flat.id === selectedFlat.id}
+          index={index}
+          updateSelectedFlat={updateSelectedFlat}
+        />
+      );
+    });
+  };
 
-  render() {
-    return (
-      <div className="container">
-        <div className="flats">
-        </div>
-        <div className="map">
-        </div>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="flat-list">
+      {renderList(props)}
+    </div>
+  );
+};
 
-export default App;
+export default FlatList;
