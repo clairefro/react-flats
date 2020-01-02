@@ -18,17 +18,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.renderMap(this.state.selectedFlat);
+    this.renderMap();
   }
 
   updateSelectedFlat = (index) => {
     this.setState({ selectedFlat: flats[index] });
-
-    this.renderMap(this.state.selectedFlat);
+    this.renderMap();
   }
 
-  renderMap = (selectedFlat) => {
-    const { lat, lng } = selectedFlat
+  renderMap = () => {
+    const { lat, lng } = this.state.selectedFlat;
     const map = new mapboxgl.Map({
       container: 'map-container',
       style: 'mapbox://styles/mapbox/streets-v9',
