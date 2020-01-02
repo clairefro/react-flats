@@ -18,26 +18,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const map = new mapboxgl.Map({
-      container: 'map-container',
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: [5, 34],
-      zoom: 1.5
-    });
-
-    // map.on('move', () => {
-    //   console.log('moved');
-    //   // const { lng, lat } = map.getCenter();
-    //   // this.setState({
-    //   // lng: lng.toFixed(4),
-    //   // lat: lat.toFixed(4),
-    //   // zoom: map.getZoom().toFixed(2)
-    //   // });
-    // });
+    this.renderMap(this.state.selectedFlat);
   }
 
   updateSelectedFlat = (index) => {
     this.setState({ selectedFlat: flats[index] });
+
+    this.renderMap(this.state.selectedFlat);
+  }
+
+  renderMap = (selectedFlat) => {
+    const { lat, lng } = selectedFlat
+    const map = new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/streets-v9',
+      center: [lng, lat],
+      zoom: 16
+    });
+    new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
   }
 
   render() {

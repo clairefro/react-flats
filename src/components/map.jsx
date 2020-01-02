@@ -1,30 +1,24 @@
-import React, { Component } from 'react';
-// import ReactMapboxGl from 'react-mapbox-gl';
+// import React, { Component } from 'react';
+// import mapboxgl from 'mapbox-gl';
 //
-// const TOKEN = 'pk.eyJ1IjoiY2xhaXJlZnJvZnJvIiwiYSI6ImNrNHUybHh0OTNsNDAzbG52MHB1anZhbnIifQ.t7CnyLeX5LAGM75pSHjrXw';
-// const navStyle = {
-//   position: 'absolute',
+// mapboxgl.accessToken = 'pk.eyJ1IjoiY2xhaXJlZnJvZnJvIiwiYSI6ImNrNHUybHh0OTNsNDAzbG52MHB1anZhbnIifQ.t7CnyLeX5LAGM75pSHjrXw';
 //
-//   top: 0,
-//   left: 0,
-//   padding: '10px'
-// };
+// class Map extends Component {
+//   componentDidMount() {
+//     const { lat, lng } = this.props.selectedFlat;
+//     console.log(`lat: ${lat} lng: ${lng}`);
 //
-// export default class Map extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       viewport: {
-//         latitude: 37.785164,
-//         longitude: -100,
-//         zoom: 2.8,
-//         bearing: 0,
-//         pitch: 0,
-//         width: 500,
-//         height: 500,
-//       }
-//     };
+//     const map = new mapboxgl.Map({
+//       container: 'map-container',
+//       style: 'mapbox://styles/mapbox/streets-v9',
+//       center: [lng, lat],
+//       zoom: 12
+//     });
 //   }
+// }
+//
+// export default Map;
+
 //   render() {
 //     const {viewport} = this.state;
 //     return (
