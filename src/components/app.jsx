@@ -13,7 +13,9 @@ class App extends Component {
 
     this.state = {
       flats,
-      selectedFlat: flats[0]
+      selectedFlat: flats[0],
+      map: null,
+      marker: null
     };
   }
 
@@ -23,7 +25,19 @@ class App extends Component {
 
   updateSelectedFlat = (index) => {
     this.setState({ selectedFlat: flats[index] });
-    this.renderMap();
+    this.updateMarker();
+  }
+
+  updateMarker = () => {
+    const { lng, lat } = this.state.selectedFlat;
+    const { map, marker } = this.state;
+    // remove old marker
+    marker.remove();
+    // add new marker and update state
+    const newMarker = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+    this.setState({ marker: newMarker });
+    // fly to new marker
+    map.flyTo({ center: [lng, lat] });
   }
 
   renderMap = () => {
@@ -34,7 +48,11 @@ class App extends Component {
       center: [lng, lat],
       zoom: 16
     });
-    new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+    // add map to App state
+    this.setState({ map });
+    const marker = new mapboxgl.Marker().setLngLat([lng, lat]).addTo(map);
+    // add marker to App state
+    this.setState({ marker });
   }
 
   render() {
